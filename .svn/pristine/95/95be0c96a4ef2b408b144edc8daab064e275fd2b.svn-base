@@ -1,0 +1,232 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/resources/ticket/css/check_order_details.css?ver=4">
+<style>
+	.list-group-item{
+		font-size: 18px;
+	}
+	.card-text{
+		font-size: 22px;
+		color: black;
+	}
+	.card{
+		border-top: none;
+		margin-bottom: 20px;
+	}
+	.card-body{
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+	.list-group, .list-group-flush{
+		border-right: 0.5px solid grey;
+		border-left: 0.5px solid grey;
+		border-bottom: 0.5px solid grey;
+		border-bottom-left-radius: 1px;
+		border-bottom-right-radius: 1px;
+	}
+	
+	#points{
+		color: red;
+	}
+</style>
+</head>
+<body>
+
+
+<div class="row justify-content-center">
+	<div class="col-4">
+		<c:forEach items="${sessionScope.passengerScheduleList }" var="passengerInfo" varStatus="status">
+			<c:if test="${status.index < sessionScope.searchInfo.count }">
+				<div class="card" style="width: 28rem;">
+				  <div class="card-body">
+				    <h4 class="card-title">NO.${status.count } PASSENGER</h4>
+				    <p class="card-text">${passengerInfo.passName }</p>
+				  </div>
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item">GENDER : ${passengerInfo.gender }</li>
+				    <li class="list-group-item">BOD : ${passengerInfo.birthDate }</li>
+				    <li class="list-group-item">NATIONALITY : ${passengerInfo.countryCode }</li>
+				    <li class="list-group-item">PASSPORT.NO : ${passengerInfo.passportNum }</li>
+				    <li class="list-group-item">EMAIL : ${passengerInfo.passEmail }</li>
+				    <li class="list-group-item">PHONE : ${passengerInfo.passPhone }</li>
+				    <li class="list-group-item">ADDRESS : ${passengerInfo.passAddr }</li>
+				  </ul>
+				</div>
+			</c:if>	
+		</c:forEach>
+	</div>
+	<div class="col-4">
+		<div class='container'>
+		  <div class='window'>
+		    <div class='order-info'>
+		      <div class='order-info-content'>
+		        <h2>Order Summary</h2>
+		                <div class='line'></div>
+			        <table class='order-table'>
+			          <tbody>
+			            <tr>
+			              <!-- <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG' class='full-width'></img>
+			              </td> -->
+			              <td>
+			                <br> <span class='thin'>${sessionScope.passengerScheduleList[0].airScheCode }</span>
+			                <br> <br> <span class='thin small'>X ${sessionScope.searchInfo.count }<br><br></span>
+			              </td>
+						
+			            </tr>
+			            <tr>
+			              <td>
+			                <div class='price'>$${sessionScope.passengerScheduleList[0].ticketPrice  * sessionScope.searchInfo.count}</div>
+			              </td>
+			            </tr>
+			          </tbody>
+			        </table>
+			        
+			        <div class='line'></div>
+			        
+			        <c:if test="${sessionScope.searchInfo.hasReturn eq 'Y' }">
+			        	<table class='order-table'>
+				          <tbody>
+				            <tr>
+				              <!-- <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG' class='full-width'></img>
+				              </td> -->
+				              <td>
+				                <br> <span class='thin'>${sessionScope.passengerScheduleList[sessionScope.searchInfo.count].airScheCode }</span>
+				                <br> <br> <span class='thin small'>X ${sessionScope.searchInfo.count }<br><br></span>
+				              </td>
+							
+				            </tr>
+				            <tr>
+				              <td>
+				                <div class='price'>$${sessionScope.passengerScheduleList[sessionScope.searchInfo.count].ticketPrice * sessionScope.searchInfo.count}</div>
+				              </td>
+				            </tr>
+				          </tbody>
+				        </table>
+				        <div class='line'></div>
+			        </c:if>
+			        
+			        
+			        <c:if test="${not empty sessionScope.loginInfo }">
+			        	<table class='order-table'>
+				          <tbody>
+				            <tr>
+				              <!-- <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG' class='full-width'></img>
+				              </td> -->
+				              <td>
+				                <br> <span class='thin'>My Points</span>
+				                <br> <br> 
+				              </td>
+							
+				            </tr>
+				            <tr>
+				              <td>
+				                <div>
+				                	<span id="points" class="price"></span>
+				                	<input type="hidden" id="origin-points">
+				                </div>
+				              </td>
+				            </tr>
+				            
+				          </tbody>
+				        </table>
+				        <div class='line'></div>
+			        </c:if>
+			        
+			        <c:if test="${not empty sessionScope.loginInfo }">
+			        	<table class='order-table'>
+				          <tbody>
+				            
+				            <tr>
+				              <td>
+				                <div>
+				                	<input type="number" id="use-points" value="0">
+				                </div>
+				              </td>
+				            </tr>
+				            
+				            <tr>
+				              <td>
+				                <div>
+				                	<input type="button" id="pointsBtn" value="use">
+				                	<input type="button" id="resetPointsBtn" value="reset">
+				                </div>
+				              </td>
+				            </tr>
+				            
+				          </tbody>
+				        </table>
+				        <div class='line'></div>
+			        </c:if>
+			        
+		        <div class='total'>
+		          <span style='float:left;'>
+		            <div class='thin dense'>VAT 19%</div>
+		            TOTAL
+		          </span>
+		          <span style='float:right; text-align:right;'>
+		            <div class='thin dense'>$<span id="tax">0</span></div>
+		            <c:choose>
+		            	<c:when test="${sessionScope.searchInfo.hasReturn eq 'Y' }">
+		            		$<span id="totalPrice">
+		            			${sessionScope.passengerScheduleList[0].ticketPrice * sessionScope.searchInfo.count + sessionScope.passengerScheduleList[sessionScope.searchInfo.count].ticketPrice * sessionScope.searchInfo.count}
+		            		</span>	
+	            			<input type="hidden" id="origin-totalPrice" value="${sessionScope.passengerScheduleList[0].ticketPrice * sessionScope.searchInfo.count + sessionScope.passengerScheduleList[sessionScope.searchInfo.count].ticketPrice * sessionScope.searchInfo.count}">
+		            	</c:when>
+		            	<c:otherwise>
+		            		$<span id="totalPrice">
+		            			${sessionScope.passengerScheduleList[0].ticketPrice * sessionScope.searchInfo.count }
+	            			</span>
+            				<input type="hidden" id="origin-totalPrice" value="${sessionScope.passengerScheduleList[0].ticketPrice * sessionScope.searchInfo.count }">
+		            	</c:otherwise>
+		            </c:choose>
+		          </span>
+		        </div>
+		</div>
+		</div>
+		        <div class='credit-info'>
+		          <div class='credit-info-content'>
+		            <table class='half-input-table'>
+		              <tr><td>Please select your card: </td><td><div class='dropdown' id='card-dropdown'><div class='dropdown-btn' id='current-card'>Visa</div>
+		                <div class='dropdown-select'>
+		                <ul>
+		                  <li>Master Card</li>
+		                  <li>American Express</li>
+		                  </ul></div>
+		                </div>
+		               </td></tr>
+		            </table>
+		            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+		            Card Number
+		            <input class='input-field'></input>
+		            Card Holder
+		            <input class='input-field'></input>
+		            <table class='half-input-table'>
+		              <tr>
+		                <td> Expires
+		                  <input class='input-field'></input>
+		                </td>
+		                <td>CVC
+		                  <input class='input-field'></input>
+		                </td>
+		              </tr>
+		            </table>
+		            <button class='pay-btn' id="checkout-btn">Checkout</button>
+		
+		          </div>
+		
+		        </div>
+		      </div>
+		    </div>
+	</div>
+</div>
+
+
+<script src="/resources/ticket/js/check_order_details.js?ver=5"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-2" style="height: 45em; width: 18em; margin-left: 1em;">
+  <!-- Brand Logo -->
+  <a href="/ticket/search" class="brand-link">
+    <img src="/resources/common/img/logo.png" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-light">KH AIRLINE</span>
+  </a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav flex-column" data-widget="treeview" role="menu" style="">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li>
+            <c:forEach items="${memSideMenuList }" var="memSideMenu">
+          		<a href="/member/${memSideMenu.sideMenuUri }?sideMenuCode=${memSideMenu.sideMenuCode}" style="margin-top: 1em;" class="nav-link  <c:if test="${memSideMenu.sideMenuCode eq selectedSideMenu }">active</c:if>">
+			  		 ${memSideMenu.sideMenuName }
+         		 </a>
+			 </c:forEach>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>
+</body>
+</html>

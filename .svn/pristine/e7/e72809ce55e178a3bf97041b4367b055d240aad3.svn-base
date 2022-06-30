@@ -1,0 +1,178 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/resources/admin/css/adminCommon.css" rel="stylesheet">
+</head>
+<body>
+	<div class="row" id="mainContainer">
+		<div class="col-12" id="searchContainer">
+			<form action="/admin/passengerManage" method="get">
+					<div class="input-group">
+						<span class="input-group-text">예매 코드</span><input type="text" class="form-control"
+							name="passScheCode">
+						<span class="input-group-text">비회원 코드</span><input type="text" class="form-control"
+							name="passName">
+						<span class="input-group-text">회원 아이디</span><input type="text" class="form-control"
+							name="memId">
+						<input type="submit" class="btn btn-danger btnClass" value="검색">
+					</div>
+			</form>
+		</div>
+
+		<div class="col-12" id="listContainer">
+			<table class="styled">
+				<thead>
+					<tr>
+						<td>PassCode</td>
+
+						<td>PassName</td>
+
+						<td>MemId</td>
+
+					</tr>
+				</thead>
+				<c:forEach items="${passList }" var="list">
+					<tr onclick="selectPass('${list.passScheCode}');" id="infoTr">
+						<td>${list.passScheCode }</td>
+
+						<td>${list.passName }</td>
+
+						<td><c:choose>
+								<c:when test="${not empty list.memId }">
+							${list.memId }
+						</c:when>
+								<c:otherwise>
+							비회원 입니다.
+						</c:otherwise>
+							</c:choose></td>
+
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+
+		<div class="row" id="pagingContainer">
+			<div class="col-12">
+				<nav aria-label="...">
+					<ul class="pagination justify-content-center admin">
+						<li
+							class="page-item <c:if test="${!searchVO.prev }">disabled</c:if>">
+							<a class="page-link"
+							href="admin/passengerManage?nowPage=${searchVO.beginPage - 1 }">Previous</a>
+						</li>
+						<c:forEach begin="${searchVO.beginPage }"
+							end="${searchVO.endPage }" var="pageIndex">
+							<li
+								class="page-item <c:if test="${searchVO.nowPage eq pageIndex }">active</c:if>"><a
+								class="page-link"
+								href="/admin/passengerManage?nowPage=${pageIndex }">${pageIndex}</a></li>
+						</c:forEach>
+						<li
+							class="page-item <c:if test="${!searchVO.next }">disabled</c:if>">
+							<a class="page-link"
+							href="/admin/passengerManage?=${searchVO.endPage + 1 }">Next</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div>
+
+				<div id="modalDiv">
+					<div class="modal fade" id="infoModal" data-bs-backdrop="static"
+						data-bs-keyboard="false" tabindex="-1"
+						aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<form action="" method="get" id="formId">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">예매 정보</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body" id='modalBody'>
+									<div>
+											<table class="table table-bordered border-secondary">
+												<tr>
+													<td>PASS_SCHEDULE_CODE <input type="text"
+														name="passScheCode" id="passScheCode" class="form-control"
+														value="">
+													</td>
+													<td>PASS_NAME <input type="text" name="passName"
+														id="passName" class="form-control" value="">
+													</td>
+													<td>MEM_ID <input type="text" name="memId" id="memId"
+														class="form-control" value="">
+													</td>
+													<td>GENDER <br> <input type="radio" name="gender"
+														id="male" value="MALE" checked> 남 <input type="radio"
+														name="gender" id="female" value="FEMALE"> 여
+													</td>
+													<td>BIRTH_DATE <input type="date" name="birthDate"
+														class="form-control" value="">
+													</td>
+												</tr>
+												<tr>
+													<td>COUNTRY <select class="form-select"
+														name="countryCode">
+															<c:forEach items="${countryList }" var="country">
+																<option value="${country.countryCode }">${country.countryName }</option>
+															</c:forEach>
+													</select>
+													</td>
+													<td>EMAIL <input type="email" name="passEmail"
+														class="form-control" value="">
+													</td>
+													<td>PHONE 
+													<input type="text" name="passPhone1" id="passPhone1" value="" class="form-control" maxlength="3"> 
+													<input type="text" name="passPhone2" id="passPhone2" value="" class="form-control" maxlength="4"> 
+													<input type="text" name="passPhone3" id="passPhone3" value="" class="form-control" maxlength="4"> 
+													<input type="hidden" name="passPhone" id="passPhone">
+													</td>
+													<td>ADDR <input type="text" name="passAddr"
+														class="form-control" value="">
+													</td>
+													<td>AIR_SCHEDULE_CODE <input type="text"
+														name="airScheCode" class="form-control" value="">
+													</td>
+												</tr>
+												<tr>
+													<td>SEAT_CODE <input type="text" name="seatCode"
+														class="form-control" value="">
+													</td>
+													<td>TICKET_PRICE <input type="text" name="ticketPrice"
+														class="form-control" value="">
+													</td>
+													<td>ORDER_CODE <input type="text" name="orderCode"
+														class="form-control" value="">
+													</td>
+													<td>ORDER_DATE <input type="date" name="orderDate"
+														class="form-control" value="">
+													</td>
+												</tr>
+											</table>
+									</div>
+
+								</div>
+								<div class="modal-footer" id="modalFooter">
+									<button type="button" class="btn btn-danger" id="deletePass">삭제</button>
+									<button type="submit" class="btn btn-primary" id="updatePass">수정</button>
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/resources/admin/js/pass_manage.js?ver=3"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+</html>
