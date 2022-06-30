@@ -32,8 +32,59 @@
   #### Web Freamework
   <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
   
+  #### Web Language
+  <p>
+  <img src="https://img.shields.io/badge/html5-F80000?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/css3-blue?style=for-the-badge&logo=css3&logoColor=white">
+  </p>
+  
+  #### CSS Framework
+  <img src="https://img.shields.io/badge/bootstrap-purple?style=for-the-badge&logo=bootstrap&logoColor=white">
+  
+  #### Build Tool
+  <img src="https://img.shields.io/badge/apachemaven-red?style=for-the-badge&logo=apachemaver&logoColor=white">
+  
   #### Data Base
   <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white">
+  
+  #### SQL Mapper
+  <img src="https://img.shields.io/badge/mybatis-black?style=for-the-badge&logo=mybatis&logoColor=white">
+  
+  #### Web Library
+  <p>
+  <img src="https://img.shields.io/badge/jquery-black?style=for-the-badge&logo=jquery&logoColor=white">
+  <img src="https://img.shields.io/badge/ajax-black?style=for-the-badge&logo=ajax&logoColor=white">
+  <img src="https://img.shields.io/badge/tiles-black?style=for-the-badge&logo=tiles&logoColor=white">
+  <img src="https://img.shields.io/badge/log4j-black?style=for-the-badge&logo=log4j&logoColor=white">
+  <img src="https://img.shields.io/badge/jackson-black?style=for-the-badge&logo=jackson&logoColor=white">
+  </p>
+  
+  #### Version Control
+  <img src="https://img.shields.io/badge/subversion-skyblue?style=for-the-badge&logo=subversion&logoColor=white">
+  
+  
 
 * * *
 ## 기능구현
+  <details>
+    <summary>예매</summary>
+     1
+      * 출발지와 도착지에 도시 이름을 작성하면 공항코드와 나라정보를 표시합니다.
+      * 날짜와 경로가 맞는 운항목록을 찾아 화면에 표시합니다.
+      * 세션으로 확인하여 로그인 하지 않은 상태로 예매 시 바로 로그인을 할 수 있는 페이지를 띄워주며 회원가입, 비회원으로 진행하기를 선택할 수 있습니다.
+      * 인원 수 만큼 승객의 정보를 입력받아 저장합니다.
+      * 선택한 운항목록의 좌석 현황을 이미지로 표시하고 비어있는 좌석을 선택하여 좌석을 예약할 수 있습니다.
+      * 결제 화면에서 인원 수 만큼 항공표의 값과 세금을 계산할 수 있으며 회원인 경우 포인트를 사용, 적립이 가능합니다.
+  </details>
+  
+  <details>
+    <summary>회원</summary>
+     2
+      *
+  </details>
+  
+  <details>
+    <summary>관리자</summary>
+     3
+  </details>
+  
