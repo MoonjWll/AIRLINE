@@ -61,8 +61,8 @@ public class TicketController {
 		
 		model.addAttribute("firstDefaultDate", getAWeekLater());
 		model.addAttribute("secondDefaultDate", getTwoWeeksLater());
-		System.out.println(getAWeekLater());
-		System.out.println(getTwoWeeksLater());
+		//System.out.println(getAWeekLater());
+		//System.out.println(getTwoWeeksLater());
 		
 		
 		

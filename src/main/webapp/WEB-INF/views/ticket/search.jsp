@@ -122,7 +122,7 @@
 <!-- later ver -->
 <div>
 	<div style="text-align: center;">
-		<i class="fa fa-duotone fa-caret-down" style="font-size: 5rem; color: #d5d5d5;"></i>
+		<i class="fa fa-duotone fa-caret-down" style="font-size: 5rem; color: #d5d5d5;" onclick="noticeFocus()"></i>
 	</div>
 	<div style="padding-bottom: 5rem;"></div>
 	<h2 style="text-align: center; font-size: 3.5rem;"><b>NOTICE</b></h2>
@@ -221,6 +221,6 @@
 
 
  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=deb391ab5fc0c25217fcd7653ba8fcf6"></script>        
-<script type="text/javascript" src="/resources/ticket/js/search.js?ver=78"></script>
+<script type="text/javascript" src="/resources/ticket/js/search.js?ver=79"></script>
 </body>
 </html>
