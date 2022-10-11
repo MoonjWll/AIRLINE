@@ -223,3 +223,12 @@ ol {
   border-left: 5px solid #d8d8d8;
 }
 
+#headAirScheCode{
+	font:bold;
+	font-size: 2em;
+	color:black;
+}
+
+#formId{
+	text-align: right;
+}

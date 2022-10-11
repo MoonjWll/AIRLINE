@@ -103,9 +103,9 @@ function searchToPorts(){
 // Mj추가
 function noticeFocus(){
 	window.onload = function(){
-		alert('1');
-		document.getElementById('notice_section').focus();
-	}
+	alert('1');
+	document.getElementById('notice_section').focus();
+}
 }
 
 

@@ -19,7 +19,7 @@
 			<div style="text-align: center; margin: 0 auto;">
 				<form action="/admin/airScheManage" method="get">
 					<div class="input-group"
-						style="width: 500px; margin: 0 auto; font-size: 20px; font-weight: bold; margin-top: 50px;">
+						style="width: 500px; margin: 0 auto; font-size: 20px; font-weight: bold; margin-top: 2em; padding-bottom: 2em;">
 						<span class="input-group-text">항공기 코드</span> <input type="text"
 							name="planeCode"> <input type="submit"
 							class="btn btn-primary btnClass" value="검색"
@@ -100,7 +100,7 @@
 			<div class="row" id="pagingContainer">
 				<nav aria-label="...">
 					<ul class="pagination justify-content-center admin"
-						style="text-align: center; margin: 0 auto;">
+						style="text-align: center; margin: 0 auto; padding-top: 1em;">
 						<li
 							class="page-item <c:if test="${!searchVO.prev }">disabled</c:if>">
 							<a class="page-link"

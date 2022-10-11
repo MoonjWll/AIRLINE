@@ -73,21 +73,18 @@ background-color: white;
 				<div class="col-1"></div>
 				<div class="col-2">
 					<div class="card gradationSeat" style="width: 18rem; color: white;">
-						
 						<div class="card-body">
-							
 						</div>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item gradationSeat">${adminAirScheduleVO.airScheCode }<span
+							<li class="list-group-item gradationSeat" style="font: bold; font-size: 1.5em;">${adminAirScheduleVO.airScheCode }<span
 								id="seatNumScreen"></span>
-								
 						</li>
 						</ul>
 						<div class="card-body">
-						<div class="col-8" id="infoDiv">
+						<div class="col-8" id="infoDiv" style="margin: 0 auto;">
 									<form action="" method="post" id="formId">
-									<input type="hidden" id="airScheCode" name="airScheCode" value="${adminAirScheduleVO.airScheCode }">
-										passScheCode<br> 
+										<input type="hidden" id="airScheCode" name="airScheCode" value="${adminAirScheduleVO.airScheCode }">
+											passScheCode<br> 
 										<input type="text" name="passScheCode" id="passScheCode"><br> memId<br> 
 										<input type="text" name="memId" id="memId"><br> passName<br>
 										<input type="text" name="passName" id="passName"><br>
@@ -111,7 +108,9 @@ background-color: white;
 										<input type="hidden" name="ticketPrice">
 										<input type="hidden" name="orderCode">
 										<input type="hidden" name="orderDate">
-										<input type="submit" class="btn btn-primary" value="정보 입력">
+										<div  style="padding-top: 0.5rem;">
+											<input type="submit" class="btn btn-primary" value="정보 입력">
+										</div>
 									</form>
 								</div>
 							</div>
